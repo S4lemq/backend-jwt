@@ -1,6 +1,4 @@
 package pl.bykowski.backendjwt.product;
-
-
 public class Book {
 
     private String title;

@@ -1,4 +1,4 @@
-package pl.bykowski.backendjwt;
+package pl.bykowski.backendjwt.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.interfaces.DecodedJWT;

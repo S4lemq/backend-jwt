@@ -1,9 +1,10 @@
-package pl.bykowski.backendjwt;
+package pl.bykowski.backendjwt.services;
 
 import com.auth0.jwt.JWT;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
-import pl.bykowski.backendjwt.user.MyUser;
+import pl.bykowski.backendjwt.security.JwtConfig;
+import pl.bykowski.backendjwt.entities.UserEntity;
 
 import java.util.Date;
 import java.util.stream.Collectors;
@@ -16,12 +17,12 @@ public class JwtService {
         this.jwtConfig = jwtConfig;
     }
 
-    public String generateJwtToken(MyUser myUser){
+    public String generateJwtToken(UserEntity userEntity){
         return JWT.create()
-                .withSubject(myUser.getUsername())
+                .withSubject(userEntity.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + jwtConfig.getMillisecondsInDay()))
                 .withIssuer(jwtConfig.getIssuer())
-                .withClaim("role", myUser.getAuthorities()
+                .withClaim("role", userEntity.getAuthorities()
                         .stream()
                         .map(GrantedAuthority::getAuthority)
                         .collect(Collectors.toList()))

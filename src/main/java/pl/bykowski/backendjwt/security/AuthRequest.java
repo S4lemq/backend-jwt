@@ -1,4 +1,4 @@
-package pl.bykowski.backendjwt.user;
+package pl.bykowski.backendjwt.security;
 
 public class AuthRequest {
     private String email;
